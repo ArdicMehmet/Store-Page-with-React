@@ -1,29 +1,36 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import "./App.css";
-
-import { useSelector, useDispatch } from "react-redux";
-import { getAllProducts, setFilter, getProductsById } from "./app/productSlice";
-import { getAllCategories } from "./app/categorySlice";
+import "./css/font.css";
+import Home from "./pages/Home";
+// import { useSelector, useDispatch } from "react-redux";
+// import {
+//   getAllProducts,
+//   setFilter,
+//   getProductsById,
+// } from "./redux/productSlice";
+// import { getAllCategories } from "./redux/categorySlice";
+// import Card from "./components/Card";
 function App() {
-  const dispatch = useDispatch();
-  const filteredProducts = useSelector(
-    (state) => state.products.filteredProducts
-  );
-  const choosenProduct = useSelector((state) => state.products.choosenProduct);
-  const loading = useSelector((state) => state.products.loading);
-  const filter = useSelector((state) => state.products.filter);
+  // const dispatch = useDispatch();
+  // const filteredProducts = useSelector(
+  //   (state) => state.products.filteredProducts
+  // );
+  // const choosenProduct = useSelector((state) => state.products.choosenProduct);
+  // const loading = useSelector((state) => state.products.loading);
+  // const filter = useSelector((state) => state.products.filter);
 
-  const categories = useSelector((state) => state.categories.categories);
-  useEffect(() => {
-    dispatch(getAllProducts());
-    dispatch(getAllCategories());
-  }, []);
-  useEffect(() => {
-    console.log("Choosen Product : ", choosenProduct);
-  }, [choosenProduct]);
+  // const categories = useSelector((state) => state.categories.categories);
+  // useEffect(() => {
+  //   dispatch(getAllProducts());
+  //   dispatch(getAllCategories());
+  // }, []);
+  // useEffect(() => {
+  //   console.log("Choosen Product : ", choosenProduct);
+  // }, [choosenProduct]);
   return (
     <>
-      {categories
+      <Home />
+      {/* {categories
         ? categories.map((category) => (
             <button
               style={{ marginRight: "10px" }}
@@ -37,19 +44,17 @@ function App() {
       <p>Loading : {loading}</p>
       {filteredProducts
         ? filteredProducts.map((product) => (
-            <div key={Math.floor(Math.random() * Date.now())}>
-              <div className="img">
-                <img
-                  src={product.image}
-                  onClick={(_) => dispatch(getProductsById(product.id))}
-                  alt={product.title}
-                />
-              </div>
-            </div>
+            <Card
+              title={product.title}
+              imgSrc={product.image}
+              price={product.price}
+              rating={product.rating}
+              key={Math.floor(Math.random() * Date.now())}
+            />
           ))
         : ""}
       <hr />
-      <p>Filter : {filter}</p>
+      <p>Filter : {filter}</p> */}
     </>
   );
 }
