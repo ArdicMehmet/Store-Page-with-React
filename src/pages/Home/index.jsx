@@ -6,9 +6,8 @@ import {
   setFilter,
   getProductsById,
 } from "../../redux/productSlice";
-// import { getAllCategories } from "../../redux/categorySlice";
 import Card from "../../components/Card/index";
-import CategoryBar from "../../components/Category";
+import CategoryBar from "../../components/CategoryBar/index";
 function Home() {
   const dispatch = useDispatch();
   const filteredProducts = useSelector(
@@ -18,10 +17,8 @@ function Home() {
   const loading = useSelector((state) => state.products.loading);
   const filter = useSelector((state) => state.products.filter);
 
-  //   const categories = useSelector((state) => state.categories.categories);
   useEffect(() => {
     dispatch(getAllProducts());
-    // dispatch(getAllCategories());
   }, []);
   useEffect(() => {
     console.log("Choosen Product : ", choosenProduct);
@@ -29,19 +26,8 @@ function Home() {
   return (
     <>
       <CategoryBar />
-      {/* <main className="min-h-screen w-full">
+      <main className="min-h-screen w-full">
         <div className="container max-w-[1200px] mx-auto">
-          {categories
-            ? categories.map((category) => (
-                <button
-                  style={{ marginRight: "10px" }}
-                  key={Math.floor(Math.random() * Date.now())}
-                  onClick={(_) => dispatch(setFilter(category))}
-                >
-                  {category}
-                </button>
-              ))
-            : ""}
           <p>Loading : {loading}</p>
           <div className="grid md:grid-cols-4 grid-cols-2 gap-4 p-4">
             {filteredProducts
@@ -59,7 +45,7 @@ function Home() {
           <hr />
           <p>Filter : {filter}</p>
         </div>
-      </main> */}
+      </main>
     </>
   );
 }
