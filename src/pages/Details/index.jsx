@@ -14,6 +14,7 @@ function Details() {
   useEffect(() => {
     dispatch(getProductsById(productId));
   }, []);
+
   return (
     <>
       {loading ? (
@@ -33,7 +34,7 @@ function Details() {
                 {product.title}
               </h1>
               <p className="md:mb-8 mb-4">{product.description}</p>
-              <Rate star={product.rating} />
+              {product ? <Rate star={product.rating} /> : ""}
               <p className="text-lg font-bold"> {product.price} €</p>
             </figcaption>
           </div>

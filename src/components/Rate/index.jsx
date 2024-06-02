@@ -3,12 +3,16 @@ import { Rating } from "react-simple-star-rating";
 function Rate({ star }) {
   return (
     <div className="pointer-events-none">
-      <Rating
-        initialValue={star}
-        SVGstyle={{ display: "inline-block", width: "20px" }}
-        allowHover={false}
-        allowFraction={true}
-      />
+      {star ? (
+        <Rating
+          initialValue={star.rate}
+          SVGstyle={{ display: "inline-block", width: "20px" }}
+          allowHover={false}
+          allowFraction={true}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
