@@ -1,18 +1,20 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setFilter } from "../../redux/productSlice";
-function Link({ linkName, linkAddress }) {
+import { Link } from "react-router-dom";
+function NavLink({ linkName, linkAddress }) {
   const dispatch = useDispatch();
 
   return (
-    <a
+    <Link
+      to={"/"}
       className="inline-block p-4 border-b-2 border-transparent hover:border-black transition-colors duration-300 uppercase"
       onClick={(_) => dispatch(setFilter(linkName))}
       href="#"
     >
       {linkName}
-    </a>
+    </Link>
   );
 }
 
-export default Link;
+export default NavLink;

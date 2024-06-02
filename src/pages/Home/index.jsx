@@ -1,50 +1,54 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getAllProducts,
-  setFilter,
-  getProductsById,
-} from "../../redux/productSlice";
+import { getAllProducts } from "../../redux/productSlice";
 import Card from "../../components/Card/index";
-import CategoryBar from "../../components/CategoryBar/index";
+import Loading from "../../components/Loading";
+import Error from "../../components/Error";
 function Home() {
   const dispatch = useDispatch();
   const filteredProducts = useSelector(
     (state) => state.products.filteredProducts
   );
-  const choosenProduct = useSelector((state) => state.products.choosenProduct);
-  const loading = useSelector((state) => state.products.loading);
+  const loading = useSelector((state) => state.products.isLoading);
+  const error = useSelector((state) => state.products.error);
   const filter = useSelector((state) => state.products.filter);
 
   useEffect(() => {
-    dispatch(getAllProducts());
+    !filter ? dispatch(getAllProducts()) : "";
   }, []);
   useEffect(() => {
-    console.log("Choosen Product : ", choosenProduct);
-  }, [choosenProduct]);
+    console.log("Loading : ", loading);
+  }, [loading]);
+
   return (
     <>
-      <CategoryBar />
-      <main className="min-h-screen w-full">
-        <div className="container max-w-[1200px] mx-auto">
-          <p>Loading : {loading}</p>
-          <div className="grid md:grid-cols-4 grid-cols-2 gap-4 p-4">
-            {filteredProducts
-              ? filteredProducts.map((product) => (
-                  <Card
-                    title={product.title}
-                    imgSrc={product.image}
-                    price={product.price}
-                    rating={product.rating}
-                    key={Math.floor(Math.random() * Date.now())}
-                  />
-                ))
-              : ""}
+      <main className="w-full relative">
+        {loading ? (
+          <Loading />
+        ) : !error ? (
+          <div className="container max-w-[1200px] mx-auto">
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 p-4">
+              {filteredProducts
+                ? filteredProducts.map((product) => (
+                    <Card
+                      id={product.id}
+                      title={product.title}
+                      imgSrc={product.image}
+                      price={product.price}
+                      key={Math.floor(Math.random() * Date.now())}
+                    />
+                  ))
+                : ""}
+            </div>
           </div>
-          <hr />
-          <p>Filter : {filter}</p>
-        </div>
+        ) : (
+          <Error
+            message={
+              "Şuan bu hizmetimiz bakımdadır. Lütfen daha sonra tekrar deneyin."
+            }
+          />
+        )}
       </main>
     </>
   );

@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 const initialState = {
   categories:[],
+  isLoading:false,
+  error:false,
 }
 
 export const getAllCategories = createAsyncThunk('categories',async ()=>{
@@ -17,12 +19,15 @@ export const categorySlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getAllCategories.fulfilled, (state, action) => {
         state.categories = action.payload
+        state.isLoading=false
     })
     builder.addCase(getAllCategories.pending, (state, action) => {
-        console.log("Categories is pulling");
+        state.isLoading=true;
+        state.error= false;
       })
     builder.addCase(getAllCategories.rejected, (state, action) => {
-        console.log("Hata");
+        state.isLoading=false
+        state.error=action.error
       })
   },
 })

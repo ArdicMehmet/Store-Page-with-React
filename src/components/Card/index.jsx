@@ -1,12 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Card({ imgSrc, title, price, rating }) {
+function Card({ id, imgSrc, title, price }) {
   return (
-    <div className="flex flex-col gap-2 relative hover:scale-105 transition-transform duration-500 shadow-md rounded-md p-3 cursor-pointer shrink-0 justify-between">
-      <figure className="w-full h-full">
+    <Link
+      to={`/details/${id}`}
+      className="flex flex-col gap-2 relative hover:scale-105 transition-transform duration-500 shadow-md rounded-md p-3 cursor-pointer shrink-0 justify-between"
+    >
+      <figure className="w-full h-full flex items-center">
         <img
           src={imgSrc}
-          className="w-full h-full object-contain"
+          className="w-full max-h-[268px] object-contain"
           alt="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
         />
       </figure>
@@ -14,10 +18,9 @@ function Card({ imgSrc, title, price, rating }) {
         <h3 className="font-medium font-bold">{title}</h3>
         <div className="flex justify-between my-2">
           <p className="font-bold">{price} €</p>
-          <p>rating : {rating.rate}</p>
         </div>
       </figcaption>
-    </div>
+    </Link>
   );
 }
 

@@ -3,9 +3,10 @@ import axios from 'axios'
 const initialState = {
   products:[],
   filteredProducts:[],
-  choosenProduct : {},
-  filter:"",
-  loading: false,
+  choosenProduct : false,
+  filter : '',
+  isLoading: false,
+  error : false,
 }
 
 export const getAllProducts = createAsyncThunk('products',async ()=>{   
@@ -24,6 +25,7 @@ export const productSlice = createSlice({
     setFilter : (state, action) =>{
         state.filter = action.payload
         state.filteredProducts = state.filter ? state.products.filter((product)=>product.category == state.filter) : state.products;
+        state.choosenProduct = false;
     }
   },
   extraReducers: (builder) => {
@@ -31,22 +33,29 @@ export const productSlice = createSlice({
         state.filteredProducts = action.payload;
         state.products;
         state.products = action.payload;
-        state.loading = "false";
+        state.isLoading = false;
+        state.choosenProduct = false
+        
     },)
     builder.addCase(getAllProducts.pending, (state, action) => {
-        state.loading = "true";
+        state.isLoading = true;
+        state.error = false;
       })
     builder.addCase(getAllProducts.rejected, (state, action) => {
-        state.loading= 'Hata';
+      state.isLoading = false;
+      state.error=action.error
     })
     builder.addCase(getProductsById.fulfilled,(state,action)=>{
         state.choosenProduct = action.payload;
+        state.isLoading = false;
     })
     builder.addCase(getProductsById.pending,(state,action)=>{
-        //Bekliyor
+        state.isLoading = true;
+        state.error = false;
     })
     builder.addCase(getProductsById.rejected,(state,action)=>{
-        // Hata
+      state.error=action.error
+      state.isLoading = false;
     })
   },
 })

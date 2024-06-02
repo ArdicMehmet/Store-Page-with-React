@@ -1,12 +1,14 @@
 import "./App.css";
+import CategoryBar from "./components/CategoryBar";
 import "./css/font.css";
-import Home from "./pages/Home";
+import RouterArchitecture from "./router";
+
 function App() {
   return (
-    <>
-      <Home />
-    </>
+    <div>
+      <CategoryBar />
+      <RouterArchitecture />
+    </div>
   );
 }
-
 export default App;

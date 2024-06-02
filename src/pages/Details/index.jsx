@@ -1,0 +1,52 @@
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getProductsById } from "../../redux/productSlice";
+import Loading from "../../components/Loading";
+import Error from "../../components/Error";
+import Rate from "../../components/Rate";
+function Details() {
+  const dispatch = useDispatch();
+  const { productId } = useParams();
+  const product = useSelector((state) => state.products.choosenProduct);
+  const loading = useSelector((state) => state.products.isLoading);
+  const error = useSelector((state) => state.products.error);
+  useEffect(() => {
+    dispatch(getProductsById(productId));
+  }, []);
+  return (
+    <>
+      {loading ? (
+        <Loading />
+      ) : !error ? (
+        <div className="relative pt-6">
+          <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 grid-cols-1 gap-4 w-full p-6">
+            <figure className="flex justify-center items-start w-full md:pe-6">
+              <img
+                className="w-full md:h-3/4 object-contain self-start"
+                src={product.image}
+                alt={product.title}
+              />
+            </figure>
+            <figcaption className="font-manrope">
+              <h1 className="uppercase lg:text-3xl md:text-xl md:text-left text-lg text-center md:mb-8 mb-4">
+                {product.title}
+              </h1>
+              <p className="md:mb-8 mb-4">{product.description}</p>
+              <Rate star={product.rating} />
+              <p className="text-lg font-bold"> {product.price} €</p>
+            </figcaption>
+          </div>
+        </div>
+      ) : (
+        <Error
+          message={
+            "Şuan bu hizmetimiz bakımdadır. Lütfen daha sonra tekrar deneyin."
+          }
+        />
+      )}
+    </>
+  );
+}
+
+export default Details;
