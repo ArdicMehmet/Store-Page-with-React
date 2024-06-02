@@ -14,7 +14,7 @@ Desktop-Design
 
 2-) ![Task 2](https://github.com/ArdicMehmet/Store-Page-with-React/assets/48796920/c55a7ac2-e7e1-49d6-a3b5-1f760d600fb2)
 
-Mobile-Desing
+Mobile-Design
 
 1-) ![task 2 5](https://github.com/ArdicMehmet/Store-Page-with-React/assets/48796920/e9ac5a8d-7e65-4488-bde8-9c4467133495)
 
