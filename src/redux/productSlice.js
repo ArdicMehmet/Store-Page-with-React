@@ -38,11 +38,11 @@ export const productSlice = createSlice({
       state.basketProductList.forEach(product => {
         if(product.id == id ){
           isInclude = true;
-          product.count++;
+          product.quantity++;
           state.basketProductList = [...state.basketProductList];
         }
       })
-      !isInclude && id ? state.basketProductList = [...state.basketProductList, {id, title, price, count:1}] : null;
+      !isInclude && id ? state.basketProductList = [...state.basketProductList, {id, title, price, quantity:1}] : null;
     }
   },
   extraReducers: (builder) => {

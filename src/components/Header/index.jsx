@@ -9,13 +9,13 @@ function Header() {
   const dispatch = useDispatch();
   const openBasketModal = (_) => dispatch(setBasketModal());
   const basketList = useSelector((state) => state.products.basketProductList);
-  const [countProduct, setCountProduct] = useState(0);
+  const [quantityProduct, setQuantityProduct] = useState(0);
   useEffect(() => {
-    let count = 0;
+    let quantity = 0;
     basketList?.forEach((product) => {
-      count += product?.count;
+      quantity += product?.quantity;
     });
-    setCountProduct(count);
+    setQuantityProduct(quantity);
   }, [basketList]);
 
   return (
@@ -41,9 +41,9 @@ function Header() {
             onClick={openBasketModal}
           >
             <SlBasket className="text-3xl" />
-            {countProduct > 0 ? (
+            {quantityProduct > 0 ? (
               <p className="text-xs number bg-red-600 text-white font-manrope flex justify-center items-center box-content">
-                {countProduct}
+                {quantityProduct}
               </p>
             ) : (
               ""

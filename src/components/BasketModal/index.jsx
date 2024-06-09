@@ -15,7 +15,7 @@ function BasketModal() {
     setTotalPrice(0);
     basketProductList?.forEach((product) => {
       setTotalPrice(
-        (prevTotalPrice) => prevTotalPrice + product.price * product.count
+        (prevTotalPrice) => prevTotalPrice + product.price * product.quantity
       );
     });
   }, [basketProductList]);
@@ -36,7 +36,7 @@ function BasketModal() {
                 className="flex flex-row flex-nowrap w-full gap-x-4"
               >
                 <p className="flex-auto">{product.title}</p>
-                <p className="flex-none">x {product.count}</p>
+                <p className="flex-none">x {product.quantity}</p>
                 <p className="flex-none text-green-300">{product.price} €</p>
               </li>
             ))

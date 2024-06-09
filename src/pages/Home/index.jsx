@@ -19,9 +19,6 @@ function Home() {
   useEffect(() => {
     !filter ? dispatch(getAllProducts()) : "";
   }, []);
-  useEffect(() => {
-    console.log("Loading : ", loading);
-  }, [loading]);
 
   return (
     <>
