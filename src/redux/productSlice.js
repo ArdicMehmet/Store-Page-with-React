@@ -4,9 +4,11 @@ const initialState = {
   products:[],
   filteredProducts:[],
   choosenProduct : false,
+  basketProductList : [],
   filter : '',
   isLoading: false,
   error : false,
+  isShowBasketModal : false,
 }
 
 export const getAllProducts = createAsyncThunk('products',async ()=>{   
@@ -26,6 +28,21 @@ export const productSlice = createSlice({
         state.filter = action.payload
         state.filteredProducts = state.filter ? state.products.filter((product)=>product.category == state.filter) : state.products;
         state.choosenProduct = false;
+    },
+    setBasketModal : (state)=>{
+      state.isShowBasketModal = !state.isShowBasketModal;
+    },
+    setBasketProductList: (state,action)=>{
+      let isInclude = false;
+      const {id, title, price} = action.payload;
+      state.basketProductList.forEach(product => {
+        if(product.id == id ){
+          isInclude = true;
+          product.count++;
+          state.basketProductList = [...state.basketProductList];
+        }
+      })
+      !isInclude && id ? state.basketProductList = [...state.basketProductList, {id, title, price, count:1}] : null;
     }
   },
   extraReducers: (builder) => {
@@ -59,6 +76,6 @@ export const productSlice = createSlice({
     })
   },
 })
-export const { setFilter } = productSlice.actions
+export const { setFilter, setBasketModal, setBasketProductList } = productSlice.actions
 
 export default productSlice.reducer

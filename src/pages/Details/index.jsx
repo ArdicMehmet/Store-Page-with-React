@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getProductsById } from "../../redux/productSlice";
+import {
+  getProductsById,
+  setBasketProductList,
+} from "../../redux/productSlice";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
 import Rate from "../../components/Rate";
+import CategoryBar from "../../components/CategoryBar";
+import Header from "../../components/Header";
 function Details() {
   const dispatch = useDispatch();
   const { productId } = useParams();
@@ -15,8 +20,14 @@ function Details() {
     dispatch(getProductsById(productId));
   }, []);
 
+  const addToBasket = (_) => {
+    dispatch(setBasketProductList(product));
+  };
+
   return (
     <>
+      <Header />
+      <CategoryBar />
       {loading ? (
         <Loading />
       ) : !error ? (
@@ -36,6 +47,13 @@ function Details() {
               <p className="md:mb-8 mb-4">{product.description}</p>
               {product ? <Rate star={product.rating} /> : ""}
               <p className="text-lg font-bold"> {product.price} €</p>
+              <button
+                type="button"
+                className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-6"
+                onClick={addToBasket}
+              >
+                Sepete Ekle
+              </button>
             </figcaption>
           </div>
         </div>

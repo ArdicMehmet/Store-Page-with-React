@@ -8,6 +8,9 @@ export default {
     extend: {
       fontFamily: {
         'manrope': 'Manrope',
+      },
+      container:{
+        center: true,
       }
     }
   },

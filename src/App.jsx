@@ -1,13 +1,16 @@
 import "./App.css";
-import CategoryBar from "./components/CategoryBar";
+import BasketModal from "./components/BasketModal";
 import "./css/font.css";
 import RouterArchitecture from "./router";
-
+import { useSelector } from "react-redux";
 function App() {
+  const showBasketModal = useSelector(
+    (state) => state.products.isShowBasketModal
+  );
   return (
-    <div>
-      <CategoryBar />
+    <div className="relative">
       <RouterArchitecture />
+      {showBasketModal && <BasketModal />}
     </div>
   );
 }

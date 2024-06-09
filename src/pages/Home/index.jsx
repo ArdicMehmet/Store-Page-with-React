@@ -5,6 +5,8 @@ import { getAllProducts } from "../../redux/productSlice";
 import Card from "../../components/Card/index";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
+import CategoryBar from "../../components/CategoryBar";
+import Header from "../../components/Header";
 function Home() {
   const dispatch = useDispatch();
   const filteredProducts = useSelector(
@@ -23,6 +25,8 @@ function Home() {
 
   return (
     <>
+      <Header />
+      <CategoryBar />
       <main className="w-full relative">
         {loading ? (
           <Loading />
