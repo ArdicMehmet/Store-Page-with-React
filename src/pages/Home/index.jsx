@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllProducts } from "../../redux/productSlice";
@@ -7,6 +7,7 @@ import Loading from "../../components/Loading";
 import Error from "../../components/Error";
 import CategoryBar from "../../components/CategoryBar";
 import Header from "../../components/Header";
+import MessageBox from "../../components/MessageBox";
 function Home() {
   const dispatch = useDispatch();
   const filteredProducts = useSelector(
@@ -16,12 +17,14 @@ function Home() {
   const error = useSelector((state) => state.products.error);
   const filter = useSelector((state) => state.products.filter);
 
+  const messageShow = useState(false);
+
   useEffect(() => {
     !filter ? dispatch(getAllProducts()) : "";
   }, []);
 
   return (
-    <>
+    <div className="relative">
       <Header />
       <CategoryBar />
       <main className="w-full relative">
@@ -51,7 +54,8 @@ function Home() {
           />
         )}
       </main>
-    </>
+      {/* {messageShow && <MessageBox msg={{ type: "success", text: "Deneme" }} />} */}
+    </div>
   );
 }
 

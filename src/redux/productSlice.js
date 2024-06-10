@@ -43,6 +43,9 @@ export const productSlice = createSlice({
         }
       })
       !isInclude && id ? state.basketProductList = [...state.basketProductList, {id, title, price, quantity:1}] : null;
+    },
+    setClearBasketList: (state)=>{
+      state.basketProductList = [];
     }
   },
   extraReducers: (builder) => {
@@ -76,6 +79,6 @@ export const productSlice = createSlice({
     })
   },
 })
-export const { setFilter, setBasketModal, setBasketProductList } = productSlice.actions
+export const { setFilter, setBasketModal, setBasketProductList, setClearBasketList } = productSlice.actions
 
 export default productSlice.reducer

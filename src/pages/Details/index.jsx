@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
@@ -10,22 +10,30 @@ import Error from "../../components/Error";
 import Rate from "../../components/Rate";
 import CategoryBar from "../../components/CategoryBar";
 import Header from "../../components/Header";
+import MessageBox from "../../components/MessageBox";
 function Details() {
   const dispatch = useDispatch();
   const { productId } = useParams();
   const product = useSelector((state) => state.products.choosenProduct);
   const loading = useSelector((state) => state.products.isLoading);
   const error = useSelector((state) => state.products.error);
+
+  const [messageShow, setMessageShow] = useState(false);
+
   useEffect(() => {
     dispatch(getProductsById(productId));
   }, []);
 
   const addToBasket = (_) => {
     dispatch(setBasketProductList(product));
+    setMessageShow(true);
+    setTimeout(() => {
+      setMessageShow(false);
+    }, 2000);
   };
 
   return (
-    <>
+    <div className="relative">
       <Header />
       <CategoryBar />
       {loading ? (
@@ -64,7 +72,10 @@ function Details() {
           }
         />
       )}
-    </>
+      {messageShow && (
+        <MessageBox msg={{ type: "success", text: "Ürün sepete eklendi" }} />
+      )}
+    </div>
   );
 }
 
