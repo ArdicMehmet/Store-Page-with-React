@@ -32,12 +32,16 @@ function BasketModal() {
   return (
     <div className="basket-modal bg-gray-700 sm:w-[400px] transition-all w-full fixed top-0 right-0 z-20 h-dvh overflow-y-auto overflow-x-hidden flex flex-col p-6 transition-all">
       <div className="flex justify-between">
-        <h2
-          className="text-lg text-red-600 cursor-pointer"
-          onClick={(_) => setClearWarningModal((prev) => !prev)}
-        >
-          Sepeti Temizle
-        </h2>
+        {basketProductList.length > 0 ? (
+          <h2
+            className="text-lg text-red-600 cursor-pointer"
+            onClick={(_) => setClearWarningModal((prev) => !prev)}
+          >
+            Sepeti Temizle
+          </h2>
+        ) : (
+          <div></div>
+        )}
         <RiCloseLargeFill
           className="bg-gray-300 rounded-full box-content p-2 hover:opacity-70 cursor-pointer"
           onClick={closeBasketModal}

@@ -10,7 +10,7 @@ function MessageBox({ msg }) {
     <div
       className={`${
         msg?.type == "success" ? "bg-green-300" : "bg-red-300"
-      } text-white fixed left-5 bottom-5 p-6 ps-20 pe-20 font-manrope rounded text-lg opacity-80`}
+      } text-white fixed md:left-5 bottom-5 p-6 md:ps-20 md:pe-20 font-manrope rounded text-lg opacity-80`}
     >
       <div
         className={`transition-all ${
