@@ -37,7 +37,7 @@ function BasketModal() {
             className="text-lg text-red-600 cursor-pointer"
             onClick={(_) => setClearWarningModal((prev) => !prev)}
           >
-            Sepeti Temizle
+            Clear to basket
           </h2>
         ) : (
           <div></div>
@@ -62,7 +62,7 @@ function BasketModal() {
             ))
           ) : (
             <li key={Math.floor(Math.random() * Date.now())}>
-              Sepetinizde ürün yok
+              There are no products in your basket
             </li>
           )}
         </ul>
@@ -73,21 +73,21 @@ function BasketModal() {
       </div>
       {clearWarningModal && (
         <div className="bg-white p-6 font-manrope absolute top-1 left-1 w-full h-[250px] z-30 flex flex-col justify-center items-center">
-          <p>Sepetinizi temizlemek istediğinize emin misiniz ?</p>
+          <p>Are you sure you want to clear your basket?</p>
           <div className="flex flex-row justify-center items-center row-gap-6">
             <button
               type="button"
               className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 mt-6"
               onClick={clearBasket}
             >
-              Evet
+              Yes
             </button>
             <button
               type="button"
               className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-6"
               onClick={(_) => setClearWarningModal((prev) => !prev)}
             >
-              Hayır
+              No
             </button>
           </div>
         </div>

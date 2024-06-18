@@ -18,7 +18,7 @@ function Linklist({ categoryList }) {
               onClick={(_) => dispatch(setFilter(""))}
               href="#"
             >
-              Tüm Ürünler
+              All Products
             </Link>
           </li>
           {categoryList.map((category) => (
