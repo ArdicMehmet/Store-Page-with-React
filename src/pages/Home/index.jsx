@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllProducts } from "../../redux/productSlice";
 import Card from "../../components/Card/index";
 import Loading from "../../components/Loading";
-import Error from "../../components/Error";
+import Info from "../../components/Info";
 import CategoryBar from "../../components/CategoryBar";
 import Header from "../../components/Header";
 import MessageBox from "../../components/MessageBox";
@@ -47,9 +47,9 @@ function Home() {
             </div>
           </div>
         ) : (
-          <Error
+          <Info
             message={
-              "Şuan bu hizmetimiz bakımdadır. Lütfen daha sonra tekrar deneyin."
+              "This service is currently under maintenance. Please try again later."
             }
           />
         )}

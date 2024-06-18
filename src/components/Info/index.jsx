@@ -1,7 +1,7 @@
 import React from "react";
 
-function Error({ message }) {
+function Info({ message }) {
   return <p className="text-center p-6 font-manrope">{message}</p>;
 }
 
-export default Error;
+export default Info;

@@ -6,7 +6,7 @@ import {
   setBasketProductList,
 } from "../../redux/productSlice";
 import Loading from "../../components/Loading";
-import Error from "../../components/Error";
+import Info from "../../components/Info";
 import Rate from "../../components/Rate";
 import CategoryBar from "../../components/CategoryBar";
 import Header from "../../components/Header";
@@ -66,14 +66,10 @@ function Details() {
           </div>
         </div>
       ) : (
-        <Error
-          message={
-            "Şuan bu hizmetimiz bakımdadır. Lütfen daha sonra tekrar deneyin."
-          }
-        />
+        <Info message={"Our service is currently under maintenance."} />
       )}
       {messageShow && (
-        <MessageBox msg={{ type: "success", text: "Ürün sepete eklendi" }} />
+        <MessageBox msg={{ type: "success", text: "Added to basket" }} />
       )}
     </div>
   );

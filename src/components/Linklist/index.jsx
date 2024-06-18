@@ -3,7 +3,7 @@ import NavLink from "../NavLink";
 import { setFilter } from "../../redux/productSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import Error from "../Error";
+import Info from "../Info";
 function Linklist({ categoryList }) {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.categories.error);
@@ -28,7 +28,7 @@ function Linklist({ categoryList }) {
           ))}
         </ul>
       ) : (
-        <Error message={"Category servisi bakımdadır."} />
+        <Info message={"Category service is currently under maintenance"} />
       )}
     </div>
   );

@@ -5,7 +5,7 @@ function NotFound() {
     <>
       <Header />
       <main className="h-dvh flex justify-center items-center">
-        <h1 className="title">Aradığınız sayfa mevcut değil.</h1>
+        <h1 className="title">The page you are looking for does not exist.</h1>
       </main>
     </>
   );
