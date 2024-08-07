@@ -7,7 +7,6 @@ import Loading from "../../components/Loading";
 import Info from "../../components/Info";
 import CategoryBar from "../../components/CategoryBar";
 import Header from "../../components/Header";
-import MessageBox from "../../components/MessageBox";
 function Home() {
   const dispatch = useDispatch();
   const filteredProducts = useSelector(
