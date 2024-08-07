@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Card({ id, imgSrc, title, price }) {
   return (
     <Link
-      to={`/details/${id}`}
+      to={`/Store-Page-with-React/details/${id}`}
       className="flex flex-col gap-2 relative hover:scale-105 transition-transform duration-500 shadow-md rounded-md p-3 cursor-pointer shrink-0 justify-between"
     >
       <figure className="w-full h-full flex items-center">

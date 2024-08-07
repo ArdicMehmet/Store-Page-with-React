@@ -7,7 +7,7 @@ function NavLink({ linkName, linkAddress }) {
 
   return (
     <Link
-      to={"/"}
+      to={"/Store-Page-with-React/"}
       className="inline-block p-4 border-b-2 border-transparent hover:border-black transition-colors duration-300 uppercase"
       onClick={(_) => dispatch(setFilter(linkName))}
       href="#"

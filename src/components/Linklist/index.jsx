@@ -13,7 +13,7 @@ function Linklist({ categoryList }) {
         <ul className="flex md:flex-row flex-col md:gap-8 gap-2 justify-center items-center font-manrope w-full border-b-2 border-gray-300">
           <li>
             <Link
-              to="/"
+              to={"/Store-Page-with-React/"}
               className="inline-block p-4 border-b-2 border-transparent hover:border-black transition-colors duration-300 uppercase"
               onClick={(_) => dispatch(setFilter(""))}
               href="#"
