@@ -8,6 +8,8 @@ Features used
 5-) React Simple Rating
 6-) React Loader Snippet
 
+Live : https://ardicmehmet.github.io/Store-Page-with-React/
+
 Desktop-Design
 
 1-) ![Task 1png](https://github.com/ArdicMehmet/Store-Page-with-React/assets/48796920/b8981ff1-d5de-4bbe-86cd-e00d5d29e119)
