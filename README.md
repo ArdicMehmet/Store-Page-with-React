@@ -10,13 +10,13 @@ Features used
 
 Live : https://ardicmehmet.github.io/Store-Page-with-React/
 
-Desktop-Design
+Desktop-Design :
 
 1-) ![Task 1png](https://github.com/ArdicMehmet/Store-Page-with-React/assets/48796920/b8981ff1-d5de-4bbe-86cd-e00d5d29e119)
 
 2-) ![Task 2](https://github.com/ArdicMehmet/Store-Page-with-React/assets/48796920/c55a7ac2-e7e1-49d6-a3b5-1f760d600fb2)
 
-Mobile-Design
+Mobile-Design :
 
 1-) ![task 2 5](https://github.com/ArdicMehmet/Store-Page-with-React/assets/48796920/e9ac5a8d-7e65-4488-bde8-9c4467133495)
 
